@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import { StudentRoutes } from './modules/student/student.routes';
+import notFound from './app/middlewares/notFound';
 const app: Application = express();
 
 app.use(express.json());
@@ -15,5 +16,8 @@ const getAController = (req: Request, res: Response) => {
 };
 
 app.get('/', getAController);
+
+// not Found
+app.use(notFound);
 
 export default app;
