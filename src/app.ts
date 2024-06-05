@@ -3,6 +3,7 @@ import cors from 'cors';
 import { StudentRoutes } from './modules/student/student.routes';
 import notFound from './app/middlewares/notFound';
 import globalErrorHandler from './app/middlewares/globalErrorhandler';
+import router from './app/routes';
 const app: Application = express();
 
 app.use(express.json());
@@ -15,6 +16,9 @@ const getAController = (req: Request, res: Response) => {
   const a = 10;
   res.send(a);
 };
+
+// application routes
+app.use('/api/v1', router);
 
 app.get('/', getAController);
 
